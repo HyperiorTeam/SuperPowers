@@ -25,12 +25,12 @@ public class SuperPowersEvent implements Listener {
 			
 		}catch(NullPointerException exc) {return;}
 		
+		Player p = e.getPlayer();
+		
 		//SuperPower check
-		SuperPower superPower = getSuperPower(item);
+		SuperPower superPower = getSuperPower(item, p);
 		if(superPower == null) return;
 		
-		//SuperPower execution
-		Player p = e.getPlayer();
 		superPower.execute(p);
 		
 		p.getInventory().remove(item);
@@ -39,7 +39,7 @@ public class SuperPowersEvent implements Listener {
 		
 	}
 	
-	private SuperPower getSuperPower(ItemStack item) {
+	private SuperPower getSuperPower(ItemStack item, Player p) {
 		
 		//replaceAll("§", "") used to get lore without the hidden functionality
 		String className = 
@@ -49,16 +49,16 @@ public class SuperPowersEvent implements Listener {
 		
 		try {
 			
-			return (SuperPower) Class.forName(className).getDeclaredConstructor().newInstance();
+			return (SuperPower) Class.forName(className).getConstructor(Player.class).newInstance(p);
 			
 		}
-		catch (ClassNotFoundException exc) {return null;}
-		catch (InstantiationException exc) {return null;}
-		catch (IllegalAccessException exc) {return null;}
-		catch (IllegalArgumentException exc) {return null;}
-		catch (InvocationTargetException exc) {return null;}
-		catch (NoSuchMethodException exc) {return null;}
-		catch (SecurityException exc) {return null;}
+		catch (ClassNotFoundException exc) {Bukkit.getConsoleSender().sendMessage("ciao1r");return null;}
+		catch (InstantiationException exc) {Bukkit.getConsoleSender().sendMessage("ciao2r");return null;}
+		catch (IllegalAccessException exc) {Bukkit.getConsoleSender().sendMessage("ciao4r");return null;}
+		catch (IllegalArgumentException exc) {Bukkit.getConsoleSender().sendMessage("ciaor");return null;}
+		catch (InvocationTargetException exc) {Bukkit.getConsoleSender().sendMessage("ciao45r");return null;}
+		catch (NoSuchMethodException exc) {exc.printStackTrace();return null;}
+		catch (SecurityException exc) {Bukkit.getConsoleSender().sendMessage("ci5ao4r");return null;}
 		
 	}
 	
