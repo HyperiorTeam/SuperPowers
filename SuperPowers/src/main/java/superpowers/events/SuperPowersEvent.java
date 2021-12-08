@@ -43,7 +43,7 @@ public class SuperPowersEvent implements Listener {
 		
 		//replaceAll("§", "") used to get lore without the hidden functionality
 		String className = 
-				"superpowers.superpowers." +
+				"superpowers.superpowers.knockout." +
 				item.getItemMeta().getLore().get(0).replaceAll("§", "").replace("superpower: ", "") +
 				"SP";
 		
@@ -52,13 +52,13 @@ public class SuperPowersEvent implements Listener {
 			return (SuperPower) Class.forName(className).getConstructor(Player.class).newInstance(p);
 			
 		}
-		catch (ClassNotFoundException exc) {Bukkit.getConsoleSender().sendMessage("ciao1r");return null;}
-		catch (InstantiationException exc) {Bukkit.getConsoleSender().sendMessage("ciao2r");return null;}
-		catch (IllegalAccessException exc) {Bukkit.getConsoleSender().sendMessage("ciao4r");return null;}
-		catch (IllegalArgumentException exc) {Bukkit.getConsoleSender().sendMessage("ciaor");return null;}
-		catch (InvocationTargetException exc) {Bukkit.getConsoleSender().sendMessage("ciao45r");return null;}
+		catch (ClassNotFoundException exc) {Bukkit.getConsoleSender().sendMessage("ClassNotFound");return null;}
+		catch (InstantiationException exc) {Bukkit.getConsoleSender().sendMessage("InstantiationException");return null;}
+		catch (IllegalAccessException exc) {Bukkit.getConsoleSender().sendMessage("IllegalAccessException");return null;}
+		catch (IllegalArgumentException exc) {Bukkit.getConsoleSender().sendMessage("IllegalArgumentException");return null;}
+		catch (InvocationTargetException exc) {Bukkit.getConsoleSender().sendMessage("InvocationTargetException");return null;}
 		catch (NoSuchMethodException exc) {exc.printStackTrace();return null;}
-		catch (SecurityException exc) {Bukkit.getConsoleSender().sendMessage("ci5ao4r");return null;}
+		catch (SecurityException exc) {Bukkit.getConsoleSender().sendMessage("SecurityException");return null;}
 		
 	}
 	

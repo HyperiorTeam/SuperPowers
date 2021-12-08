@@ -1,11 +1,11 @@
-package superpowers.superpowers.tasks;
+package superpowers.superpowers.knockout.tasks;
 
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import superpowers.main.SuperPowers;
-import superpowers.superpowers.KnockOutSP;
+import superpowers.superpowers.knockout.KnockOutSP;
 
 public class KnockOutTask extends BukkitRunnable {
 	
