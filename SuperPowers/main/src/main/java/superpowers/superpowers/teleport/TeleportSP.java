@@ -29,6 +29,7 @@ public class TeleportSP extends SuperPower {
 		l.setYaw(p.getLocation().getYaw());
 		l.setPitch(p.getLocation().getPitch());
 		
+		p.setFallDistance(0);
 		p.teleport(l);
 		
 		return true;
