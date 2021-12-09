@@ -2,7 +2,8 @@ package superpowers.enums;
 
 public enum SuperPowersEnum {
 	
-	KNOCKOUT("KnockOut");
+	KNOCKOUT("KnockOut"),
+	TELEPORT("Teleport");
 	
 	String name;
 	

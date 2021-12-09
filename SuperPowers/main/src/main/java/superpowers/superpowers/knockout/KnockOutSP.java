@@ -22,11 +22,13 @@ public class KnockOutSP extends SuperPower {
 		
 	}
 	
-	public void execute(Player p) {
+	public boolean execute(Player p) {
 		
 		PlayerAnim();
 		
-		//GroundEffect called in the task (KnockOutTask.java)
+		//LandEffect called in the task (KnockOutTaskExecute.java)
+		
+		return true;
 		
 	}
 	

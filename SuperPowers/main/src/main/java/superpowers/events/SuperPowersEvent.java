@@ -31,7 +31,7 @@ public class SuperPowersEvent implements Listener {
 		SuperPower superPower = getSuperPower(item, p);
 		if(superPower == null) return;
 		
-		superPower.execute(p);
+		if(!superPower.execute(p)) return;
 		
 		p.getInventory().remove(item);
 		
@@ -43,7 +43,9 @@ public class SuperPowersEvent implements Listener {
 		
 		//replaceAll("§", "") used to get lore without the hidden functionality
 		String className = 
-				"superpowers.superpowers.knockout." +
+				"superpowers.superpowers." +
+				item.getItemMeta().getLore().get(0).replaceAll("§", "").replace("superpower: ", "").toLowerCase() +
+				"." +
 				item.getItemMeta().getLore().get(0).replaceAll("§", "").replace("superpower: ", "") +
 				"SP";
 		

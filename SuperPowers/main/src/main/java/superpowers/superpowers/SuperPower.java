@@ -12,7 +12,9 @@ public abstract class SuperPower {
 		
 	}
 	
-	public abstract void execute(Player p);
+	
+	//returns true if execute was successfull
+	public abstract boolean execute(Player p);
 	
 	public Player getPlayer() {
 		
