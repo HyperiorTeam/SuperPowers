@@ -1,6 +1,5 @@
 package superpowers.superpowers.knockout;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -12,7 +11,8 @@ import org.bukkit.util.Vector;
 
 import superpowers.main.SuperPowers;
 import superpowers.superpowers.SuperPower;
-import superpowers.superpowers.knockout.tasks.KnockOutTask;
+import superpowers.superpowers.knockout.tasks.KnockOutTaskExecute;
+import superpowers.superpowers.knockout.tasks.KnockOutTaskGroundEffect;
 
 public class KnockOutSP extends SuperPower {
 	
@@ -34,12 +34,11 @@ public class KnockOutSP extends SuperPower {
 		
 		getPlayer().setVelocity(new Vector(0, 1, 0).multiply(1.5));
 		
-		new KnockOutTask(this).runTaskLater(SuperPowers.getInstance(), 20);
+		new KnockOutTaskExecute(this).runTaskLater(SuperPowers.getInstance(), 20);
 		
 	}
 	
-	@SuppressWarnings("deprecation")
-	public void GroundEffect() {
+	public void LandEffect() {
 		
 		int radius = 3;
 		
@@ -49,60 +48,12 @@ public class KnockOutSP extends SuperPower {
 				
 				if(x == 0 && z == 0) continue;
 				
-				boolean cancelBlocks = false;
-				
 				for(int y = 5; y >= 0; y--) {
 					
 					Location l = getPlayer().getLocation().add(x, -1 + y, z);
-					Block b = l.getBlock();
 					
+					GroundEffect(l);
 					EntityEffect(l);
-					
-					if(cancelBlocks) continue;
-					
-					if(b.getType().equals(Material.AIR) ||
-							b.getType().equals(Material.WATER) ||
-							b.getType().equals(Material.LAVA)) continue;
-					
-					FallingBlock e = l.getWorld().spawnFallingBlock(l, b.getType(), b.getData());
-					e.setVelocity(new Vector(0, 1, 0).multiply(0.75));
-					
-					new BukkitRunnable() {
-						
-						public void run() {
-							
-							if((int) e.getLocation().getY() == (int) b.getLocation().getY()) {
-								
-								b.getLocation().getBlock().setType(e.getMaterial());
-								
-								if(SuperPowers.getInstance().getServer().getVersion().contains("1.8")) {
-									
-									
-									
-								}else{
-									
-									b.getLocation().getBlock().setBlockData(e.getBlockData());
-								
-								}
-								
-								e.teleport(new Location(e.getLocation().getWorld(),
-										e.getLocation().getX(),
-										0,
-										e.getLocation().getZ()));
-								
-								cancel();
-								
-							}
-							
-						}
-						
-					}.runTaskTimer(SuperPowers.getInstance(), 1, 1);
-					
-					b.setType(Material.AIR);
-					
-					KSPFallingBlocksManager.add(e, l);
-					
-					cancelBlocks = true;
 					
 				}
 				
@@ -112,7 +63,26 @@ public class KnockOutSP extends SuperPower {
 		
 	}
 	
+	@SuppressWarnings("deprecation")
+	private void GroundEffect(Location l) {
+		
+		Block b = l.getBlock();
+		
+		if(b.getType().equals(Material.AIR) ||
+				b.getType().equals(Material.WATER) ||
+				b.getType().equals(Material.LAVA)) return;
+		
+		FallingBlock e = l.getWorld().spawnFallingBlock(l, b.getType(), b.getData());
+		e.setVelocity(new Vector(0, 1, 0).multiply(0.75));
+		
+		new KnockOutTaskGroundEffect(b, e).run();
+		
+		return;
+		
+	}
+	
 	private void EntityEffect(Location l) {
+		
 		
 		l.add(0, 1, 0);
 		

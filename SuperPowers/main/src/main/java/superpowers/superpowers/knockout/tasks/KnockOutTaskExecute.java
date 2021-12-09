@@ -7,11 +7,11 @@ import org.bukkit.util.Vector;
 import superpowers.main.SuperPowers;
 import superpowers.superpowers.knockout.KnockOutSP;
 
-public class KnockOutTask extends BukkitRunnable {
+public class KnockOutTaskExecute extends BukkitRunnable {
 	
 	private KnockOutSP knockout;
 	
-	public KnockOutTask(KnockOutSP knockout) {
+	public KnockOutTaskExecute(KnockOutSP knockout) {
 		
 		this.knockout = knockout;
 		
@@ -34,7 +34,7 @@ public class KnockOutTask extends BukkitRunnable {
 					
 					p.setNoDamageTicks(20);
 					
-					knockout.GroundEffect();
+					knockout.LandEffect();
 					
 					cancel();
 					

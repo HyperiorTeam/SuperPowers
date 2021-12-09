@@ -1,4 +1,4 @@
-package v1_8;
+package knockout;
 
 import org.bukkit.block.Block;
 import org.bukkit.entity.FallingBlock;
