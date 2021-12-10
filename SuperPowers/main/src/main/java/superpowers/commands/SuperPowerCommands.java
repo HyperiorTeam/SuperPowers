@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import net.md_5.bungee.api.ChatColor;
-import superpowers.enums.SuperPowersEnum;
+import superpowers.superpowers.SuperPowersEnum;
 
 public class SuperPowerCommands implements TabExecutor {
 	

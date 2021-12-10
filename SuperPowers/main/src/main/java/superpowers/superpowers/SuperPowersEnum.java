@@ -1,9 +1,10 @@
-package superpowers.enums;
+package superpowers.superpowers;
 
 public enum SuperPowersEnum {
 	
 	KNOCKOUT("KnockOut"),
-	TELEPORT("Teleport");
+	TELEPORT("Teleport"),
+	LASEREYES("LaserEyes");
 	
 	String name;
 	
