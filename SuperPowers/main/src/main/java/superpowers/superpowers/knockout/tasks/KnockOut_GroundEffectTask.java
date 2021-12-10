@@ -8,12 +8,12 @@ import org.bukkit.scheduler.BukkitRunnable;
 import knockout.KnockoutUtils_v1_8;
 import superpowers.main.SuperPowers;
 
-public class KnockOutTaskGroundEffect extends BukkitRunnable {
+public class KnockOut_GroundEffectTask extends BukkitRunnable {
 	
 	Block b;
 	FallingBlock e;
 	
-	public KnockOutTaskGroundEffect(Block b, FallingBlock e) {
+	public KnockOut_GroundEffectTask(Block b, FallingBlock e) {
 		
 		this.b = b;
 		this.e = e;

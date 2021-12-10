@@ -11,8 +11,8 @@ import org.bukkit.util.Vector;
 
 import superpowers.main.SuperPowers;
 import superpowers.superpowers.SuperPower;
-import superpowers.superpowers.knockout.tasks.KnockOutTaskExecute;
-import superpowers.superpowers.knockout.tasks.KnockOutTaskGroundEffect;
+import superpowers.superpowers.knockout.tasks.KnockOut_ExecuteTask;
+import superpowers.superpowers.knockout.tasks.KnockOut_GroundEffectTask;
 
 public class KnockOutSP extends SuperPower {
 	
@@ -36,7 +36,7 @@ public class KnockOutSP extends SuperPower {
 		
 		getPlayer().setVelocity(new Vector(0, 1, 0).multiply(1.5));
 		
-		new KnockOutTaskExecute(this).runTaskLater(SuperPowers.getInstance(), 20);
+		new KnockOut_ExecuteTask(this).runTaskLater(SuperPowers.getInstance(), 20);
 		
 	}
 	
@@ -79,7 +79,7 @@ public class KnockOutSP extends SuperPower {
 		
 		b.setType(Material.AIR);
 		
-		new KnockOutTaskGroundEffect(b, e).runTaskTimer(SuperPowers.getInstance(), 20, 0);
+		new KnockOut_GroundEffectTask(b, e).runTaskTimer(SuperPowers.getInstance(), 20, 0);
 		
 	}
 	

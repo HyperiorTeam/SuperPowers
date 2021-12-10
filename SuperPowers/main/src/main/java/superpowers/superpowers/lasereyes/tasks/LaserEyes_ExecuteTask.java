@@ -1,5 +1,5 @@
 package superpowers.superpowers.lasereyes.tasks;
 
-public class LaserEyesExecuteTask {
+public class LaserEyes_ExecuteTask {
 
 }
