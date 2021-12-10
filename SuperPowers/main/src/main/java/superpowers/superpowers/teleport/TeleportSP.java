@@ -18,13 +18,17 @@ public class TeleportSP extends SuperPower {
 	
 	public boolean execute(Player p) {
 		
-		Block b = p.getTargetBlock(null, 20);
+		Block target = p.getTargetBlock(null, 20);
+		Block land = target.getRelative(BlockFace.UP);
 		
-		if(b.getType().equals(Material.AIR) ||
-				b.getType().equals(Material.WATER) ||
-				b.getType().equals(Material.LAVA)) return false;
+		if(target.getRelative(BlockFace.DOWN).getType().equals(Material.AIR) ||
+				target.getType().equals(Material.WATER) ||
+				target.getType().equals(Material.LAVA)) return false;
 		
-		Location l = b.getRelative(BlockFace.UP).getLocation();
+		if(!land.getType().equals(Material.AIR) ||
+				!land.getRelative(BlockFace.UP).getType().equals(Material.AIR)) return false;
+		
+		Location l = land.getLocation();
 		
 		l.setYaw(p.getLocation().getYaw());
 		l.setPitch(p.getLocation().getPitch());

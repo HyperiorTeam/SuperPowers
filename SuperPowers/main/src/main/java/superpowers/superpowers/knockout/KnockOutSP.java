@@ -77,9 +77,9 @@ public class KnockOutSP extends SuperPower {
 		FallingBlock e = l.getWorld().spawnFallingBlock(l, b.getType(), b.getData());
 		e.setVelocity(new Vector(0, 1, 0).multiply(0.75));
 		
-		new KnockOutTaskGroundEffect(b, e).run();
+		b.setType(Material.AIR);
 		
-		return;
+		new KnockOutTaskGroundEffect(b, e).runTaskTimer(SuperPowers.getInstance(), 20, 0);
 		
 	}
 	

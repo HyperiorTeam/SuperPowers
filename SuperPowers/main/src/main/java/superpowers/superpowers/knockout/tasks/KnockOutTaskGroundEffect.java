@@ -1,7 +1,6 @@
 package superpowers.superpowers.knockout.tasks;
 
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -30,7 +29,7 @@ public class KnockOutTaskGroundEffect extends BukkitRunnable {
 		
 		if(SuperPowers.getInstance().getServer().getVersion().contains("1.8")) {
 			
-			new KnockoutUtils_v1_8().setBlockData(b, e);
+			KnockoutUtils_v1_8.setBlockData(b, e);
 			
 		}else{
 			
@@ -44,8 +43,6 @@ public class KnockOutTaskGroundEffect extends BukkitRunnable {
 				e.getLocation().getZ()));
 		
 		cancel();
-		
-		b.setType(Material.AIR);
 		
 	}
 	
