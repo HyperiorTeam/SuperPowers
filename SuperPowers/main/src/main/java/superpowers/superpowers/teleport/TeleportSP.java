@@ -21,7 +21,7 @@ public class TeleportSP extends SuperPower {
 		Block target = p.getTargetBlock(null, 20);
 		Block land = target.getRelative(BlockFace.UP);
 		
-		if(target.getRelative(BlockFace.DOWN).getType().equals(Material.AIR) ||
+		if(target.getType().equals(Material.AIR) ||
 				target.getType().equals(Material.WATER) ||
 				target.getType().equals(Material.LAVA)) return false;
 		
