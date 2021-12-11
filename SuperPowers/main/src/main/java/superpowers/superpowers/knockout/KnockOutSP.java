@@ -105,7 +105,7 @@ public class KnockOutSP extends SuperPower {
 					
 				}
 				
-			}.runTaskTimerAsynchronously(SuperPowers.getInstance(), 0, 0);
+			}.runTaskTimer(SuperPowers.getInstance(), 0, 0);
 			
 		}
 		

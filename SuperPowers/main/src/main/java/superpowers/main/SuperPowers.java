@@ -18,6 +18,8 @@ public class SuperPowers extends JavaPlugin {
 		registerCommands();
 		registerEvents();
 		
+		
+		
 	}
 	
 	private void registerCommands() {
