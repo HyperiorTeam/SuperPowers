@@ -4,7 +4,8 @@ public enum SuperPowersEnum {
 	
 	KNOCKOUT("KnockOut"),
 	TELEPORT("Teleport"),
-	LASEREYES("LaserEyes");
+	LASEREYES("LaserEyes"),
+	FLIGHT("Flight");
 	
 	String name;
 	

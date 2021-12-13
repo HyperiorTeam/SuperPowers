@@ -1,28 +1,23 @@
-package superpowers.superpowers.knockout.tasks;
+package superpowers.superpowers.flight.tasks;
 
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.util.Vector;
 
 import superpowers.main.SuperPowers;
-import superpowers.superpowers.knockout.KnockOutSP;
 
-public class KnockOut_ExecuteTask extends BukkitRunnable {
+public class Flight_ExecuteTask extends BukkitRunnable {
 	
-	private KnockOutSP knockout;
+	private Player p;
 	
-	public KnockOut_ExecuteTask(KnockOutSP knockout) {
+	public Flight_ExecuteTask(Player p) {
 		
-		this.knockout = knockout;
+		this.p = p;
 		
 	}
 	
-	@Override
 	public void run() {
 		
-		Player p = knockout.getPlayer();
-		
-		p.setVelocity(new Vector(0, -1, 0).multiply(5));
+		p.setAllowFlight(false);
 		
 		new BukkitRunnable() {
 			
@@ -33,8 +28,6 @@ public class KnockOut_ExecuteTask extends BukkitRunnable {
 				if(p.isOnGround()) {
 					
 					p.setNoDamageTicks(20);
-					
-					knockout.LandEffect();
 					
 					cancel();
 					

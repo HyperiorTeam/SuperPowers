@@ -39,7 +39,7 @@ public class LaserEyes_ExecuteTask extends BukkitRunnable {
 		
 		id = getTaskId();
 		
-		for(float i = 1; i <= 20; i+=0.1f) {
+		for(float i = 1; i <= 20; i += 0.1f) {
 			
 			Vector direction = p.getLocation().getDirection();
 			Location l = p.getEyeLocation().add(direction.multiply(i));
