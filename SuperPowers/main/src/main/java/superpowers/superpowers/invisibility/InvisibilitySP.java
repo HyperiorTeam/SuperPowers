@@ -4,7 +4,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import superpowers.main.SuperPowers;
 import superpowers.superpowers.SuperPower;
 
 public class InvisibilitySP extends SuperPower {
