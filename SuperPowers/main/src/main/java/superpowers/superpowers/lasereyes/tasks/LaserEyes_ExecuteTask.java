@@ -2,7 +2,9 @@ package superpowers.superpowers.lasereyes.tasks;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.Particle;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -41,6 +43,12 @@ public class LaserEyes_ExecuteTask extends BukkitRunnable {
 			
 			Vector direction = p.getLocation().getDirection();
 			Location l = p.getEyeLocation().add(direction.multiply(i));
+			
+			Block b = l.getBlock();
+			
+			if(!b.getType().equals(Material.GLASS) &&
+					!b.isLiquid() &&
+					!b.isEmpty()) break;
 			
 			if(SuperPowers.getInstance().getServer().getVersion().contains("1.8")) {
 				
