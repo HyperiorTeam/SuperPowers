@@ -11,6 +11,7 @@ import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.util.StringUtil;
 
 import net.md_5.bungee.api.ChatColor;
 import superpowers.superpowers.SuperPowersEnum;
@@ -91,20 +92,43 @@ public class SuperPowerCommands implements TabExecutor {
 	
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		
+		List<String> arguments = new ArrayList<String>();
 		List<String> tabComplete = new ArrayList<String>();
 		
-		if(args.length == 1) {
+		switch(args.length) {
+		
+		case 1:
 			
-			tabComplete.add("giveitem");
-			tabComplete.add("help");
+			arguments.add("giveitem");
+			arguments.add("help");
 			
-		}else if(args.length == 2) {
+			StringUtil.copyPartialMatches(args[0], arguments, tabComplete);
 			
-			for(Player p : Bukkit.getOnlinePlayers()) tabComplete.add(p.getName());
+			break;
+		
+		case 2:
 			
-		}else if(args.length == 3) {
+			if(args[0].equalsIgnoreCase("giveitem")) {
+				
+				for(Player p : Bukkit.getOnlinePlayers()) arguments.add(p.getName());
+				
+				StringUtil.copyPartialMatches(args[1], arguments, tabComplete);
+				
+			}
 			
-			for(SuperPowersEnum superpower : SuperPowersEnum.values()) tabComplete.add(superpower.getName());
+			break;
+			
+		case 3:
+			
+			if(args[0].equalsIgnoreCase("giveitem")) {
+				
+				for(SuperPowersEnum superpower : SuperPowersEnum.values()) arguments.add(superpower.getName());
+				
+				StringUtil.copyPartialMatches(args[2], arguments, tabComplete);
+				
+			}
+			
+			break;
 			
 		}
 		
