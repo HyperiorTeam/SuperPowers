@@ -21,10 +21,10 @@ public class Flight_ExecuteTask extends BukkitRunnable {
 		
 		new BukkitRunnable() {
 			
+			int maxTicks = p.getMaximumNoDamageTicks();
+			
 			@SuppressWarnings("deprecation")
 			public void run() {
-				
-				int maxTicks = p.getMaximumNoDamageTicks();
 				
 				p.setMaximumNoDamageTicks(1000);
 				p.setNoDamageTicks(1000);

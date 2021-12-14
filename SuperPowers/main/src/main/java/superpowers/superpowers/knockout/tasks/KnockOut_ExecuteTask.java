@@ -1,5 +1,6 @@
 package superpowers.superpowers.knockout.tasks;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
@@ -26,17 +27,18 @@ public class KnockOut_ExecuteTask extends BukkitRunnable {
 		
 		new BukkitRunnable() {
 			
+			int maxTicks = p.getMaximumNoDamageTicks();
+			
 			@SuppressWarnings("deprecation")
 			public void run() {
 				
-				int maxTicks = p.getMaximumNoDamageTicks();
-				
 				p.setMaximumNoDamageTicks(1000);
 				p.setNoDamageTicks(1000);
+				
 				if(p.isOnGround()) {
 					
 					p.setMaximumNoDamageTicks(maxTicks);
-					p.setNoDamageTicks(20);
+					p.setNoDamageTicks(0);
 					
 					knockout.LandEffect();
 					
