@@ -39,6 +39,8 @@ public class LaserEyes_ExecuteTask extends BukkitRunnable {
 		
 		id = getTaskId();
 		
+		if(p.isDead()) cancel();
+		
 		for(float i = 1; i <= 20; i += 0.1f) {
 			
 			Vector direction = p.getLocation().getDirection();
