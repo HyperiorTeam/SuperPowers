@@ -28,6 +28,7 @@ public class Flight_ExecuteTask extends BukkitRunnable {
 				
 				p.setMaximumNoDamageTicks(1000);
 				p.setNoDamageTicks(1000);
+				
 				if(p.isOnGround()) {
 					
 					p.setMaximumNoDamageTicks(maxTicks);
