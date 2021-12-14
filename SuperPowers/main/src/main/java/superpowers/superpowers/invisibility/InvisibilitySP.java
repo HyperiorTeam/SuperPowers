@@ -23,6 +23,12 @@ public class InvisibilitySP extends SuperPower {
 			
 		}/*/
 		
+		for(PotionEffect effect : p.getActivePotionEffects()) {
+			
+			if(effect.getType().equals(PotionEffectType.INVISIBILITY)) return false;
+			
+		}
+		
 		p.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 10 * 20, 1));
 		
 		return true;
