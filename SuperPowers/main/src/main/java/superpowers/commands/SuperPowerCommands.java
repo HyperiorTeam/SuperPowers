@@ -14,6 +14,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.StringUtil;
 
 import net.md_5.bungee.api.ChatColor;
+import superpowers.main.SuperPowers;
 import superpowers.superpowers.SuperPowersEnum;
 
 public class SuperPowerCommands implements TabExecutor {
@@ -69,6 +70,12 @@ public class SuperPowerCommands implements TabExecutor {
 			case "help":
 				
 				printHelp(sender);
+				
+				break;
+				
+			case "reload":
+				
+				SuperPowers.getInstance().reloadConfig();
 				
 				break;
 				

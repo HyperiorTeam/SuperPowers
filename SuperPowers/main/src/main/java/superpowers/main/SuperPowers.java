@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import superpowers.commands.SuperPowerCommands;
 import superpowers.events.SuperPowersEvent;
+import superpowers.superpowers.knockout.KnockOutEvents;
 
 public class SuperPowers extends JavaPlugin {
 	
@@ -18,7 +19,13 @@ public class SuperPowers extends JavaPlugin {
 		registerCommands();
 		registerEvents();
 		
+		if(!getDataFolder().exists()) {
+			
+			getDataFolder().mkdir();
+			
+		}
 		
+		saveDefaultConfig();
 		
 	}
 	
@@ -34,6 +41,7 @@ public class SuperPowers extends JavaPlugin {
 		PluginManager pm = Bukkit.getPluginManager();
 		
 		pm.registerEvents(new SuperPowersEvent(), this);
+		pm.registerEvents(new KnockOutEvents(), this);
 		
 	}
 	

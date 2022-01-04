@@ -7,12 +7,13 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 
 import superpowers.superpowers.SuperPower;
+import superpowers.superpowers.SuperPowersEnum;
 
 public class TeleportSP extends SuperPower {
 
-	public TeleportSP(Player p) {
+	public TeleportSP(Player p, SuperPowersEnum type) {
 		
-		super(p);
+		super(p, type);
 		
 	}
 	

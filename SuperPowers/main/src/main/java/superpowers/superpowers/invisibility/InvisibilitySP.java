@@ -4,13 +4,15 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import superpowers.main.SuperPowers;
 import superpowers.superpowers.SuperPower;
+import superpowers.superpowers.SuperPowersEnum;
 
 public class InvisibilitySP extends SuperPower {
 
-	public InvisibilitySP(Player p) {
+	public InvisibilitySP(Player p, SuperPowersEnum type) {
 		
-		super(p);
+		super(p, type);
 		
 	}
 	
@@ -29,7 +31,7 @@ public class InvisibilitySP extends SuperPower {
 			
 		}
 		
-		p.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 10 * 20, 1));
+		p.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, SuperPowers.getInstance().getConfig().getInt("superpowers.invisibility.duration") * 20, 1));
 		
 		return true;
 		

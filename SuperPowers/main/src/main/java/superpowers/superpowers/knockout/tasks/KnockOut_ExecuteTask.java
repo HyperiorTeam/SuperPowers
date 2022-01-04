@@ -22,7 +22,7 @@ public class KnockOut_ExecuteTask extends BukkitRunnable {
 		
 		Player p = knockout.getPlayer();
 		
-		p.setVelocity(new Vector(0, -1, 0).multiply(5));
+		p.setVelocity(new Vector(0, -1, 0).multiply(100));
 		
 		new BukkitRunnable() {
 			

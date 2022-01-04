@@ -11,14 +11,16 @@ import org.bukkit.util.Vector;
 
 import superpowers.main.SuperPowers;
 import superpowers.superpowers.SuperPower;
+import superpowers.superpowers.SuperPowersEnum;
 import superpowers.superpowers.knockout.tasks.KnockOut_ExecuteTask;
 import superpowers.superpowers.knockout.tasks.KnockOut_GroundEffectTask;
+import superpowers.superpowers.knockout.utils.KnockOutUtils;
 
 public class KnockOutSP extends SuperPower {
 	
-	public KnockOutSP(Player p) {
+	public KnockOutSP(Player p, SuperPowersEnum type) {
 		
-		super(p);
+		super(p, type);
 		
 	}
 	
@@ -63,6 +65,8 @@ public class KnockOutSP extends SuperPower {
 			
 		}
 		
+		KnockOutUtils.setFreezed(getPlayer().getUniqueId());
+		
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -84,7 +88,6 @@ public class KnockOutSP extends SuperPower {
 	}
 	
 	private void EntityEffect(Location l) {
-		
 		
 		l.add(0, 1, 0);
 		

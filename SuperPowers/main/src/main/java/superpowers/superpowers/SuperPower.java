@@ -5,10 +5,12 @@ import org.bukkit.entity.Player;
 public abstract class SuperPower {
 	
 	private Player p;
+	private SuperPowersEnum type;
 	
-	public SuperPower(Player p) {
+	public SuperPower(Player p, SuperPowersEnum type) {
 		
 		this.p = p;
+		this.type = type;
 		
 	}
 	
@@ -19,6 +21,12 @@ public abstract class SuperPower {
 	public Player getPlayer() {
 		
 		return p;
+		
+	}
+	
+	public SuperPowersEnum getType() {
+		
+		return type;
 		
 	}
 	

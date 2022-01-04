@@ -4,22 +4,25 @@ import org.bukkit.entity.Player;
 
 import superpowers.main.SuperPowers;
 import superpowers.superpowers.SuperPower;
+import superpowers.superpowers.SuperPowersEnum;
 import superpowers.superpowers.flight.tasks.Flight_ExecuteTask;
 
 public class FlightSP extends SuperPower {
 
-	public FlightSP(Player p) {
+	public FlightSP(Player p, SuperPowersEnum type) {
 		
-		super(p);
+		super(p, type);
 		
 	}
 
 	@Override
 	public boolean execute(Player p) {
 		
+		if(p.getAllowFlight() == true) return false;
+		
 		p.setAllowFlight(true);
 		
-		new Flight_ExecuteTask(p).runTaskLater(SuperPowers.getInstance(), 10 * 20);
+		new Flight_ExecuteTask(p).runTaskLater(SuperPowers.getInstance(), SuperPowers.getInstance().getConfig().getInt("superpowers.flight.duration") * 20);
 		
 		return true;
 		

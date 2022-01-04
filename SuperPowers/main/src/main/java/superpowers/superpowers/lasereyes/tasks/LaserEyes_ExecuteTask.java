@@ -31,17 +31,25 @@ public class LaserEyes_ExecuteTask extends BukkitRunnable {
 				
 			}
 			
-		}.runTaskLater(SuperPowers.getInstance(), 10 * 20);
+		}.runTaskLater(SuperPowers.getInstance(), SuperPowers.getInstance().getConfig().getInt("superpowers.lasereyes.duration") * 20);
 		
 	}
 
 	public void run() {
 		
+		if(SuperPowers.getInstance().getConfig().getInt("superpowers.lasereyes.duration") == 0) {
+			
+			cancel();
+			
+			return;
+			
+		}
+		
 		id = getTaskId();
 		
 		if(p.isDead()) cancel();
 		
-		for(float i = 1; i <= 20; i += 0.1f) {
+		for(float i = 1; i <= SuperPowers.getInstance().getConfig().getInt("superpowers.lasereyes.length"); i += 0.1f) {
 			
 			Vector direction = p.getLocation().getDirection();
 			Location l = p.getEyeLocation().add(direction.multiply(i));
@@ -62,13 +70,15 @@ public class LaserEyes_ExecuteTask extends BukkitRunnable {
 				
 			}
 			
-			for(Entity e : l.getWorld().getNearbyEntities(l, 0.5, 0.5, 0.5)) {
+			for(Entity e : l.getWorld().getNearbyEntities(l, 0.1, 0.1, 0.1)) {
+				
+				if(e.equals(p)) return;
 				
 				if(e instanceof LivingEntity) {
 					
 					LivingEntity le = (LivingEntity) e;
 					
-					le.damage(1);
+					le.damage(SuperPowers.getInstance().getConfig().getInt("superpowers.lasereyes.damage-per-tick"));
 					
 				}
 				
