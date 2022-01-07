@@ -28,6 +28,8 @@ public class SuperPowerCommands implements TabExecutor {
 			
 			case "giveitem":
 				
+				if(!sender.hasPermission("sp.giveitem") && !sender.hasPermission("sp.*")) return false;
+				
 				//args length check
 				if(args.length != 3) {
 					
@@ -69,17 +71,23 @@ public class SuperPowerCommands implements TabExecutor {
 				
 			case "help":
 				
+				if(!sender.hasPermission("sp.help") && !sender.hasPermission("sp.*")) return false;
+				
 				printHelp(sender);
 				
 				break;
 				
 			case "reload":
 				
+				if(!sender.hasPermission("sp.reload") && !sender.hasPermission("sp.*")) return false;
+				
 				SuperPowers.getInstance().reloadConfig();
 				
 				break;
 				
 			default:
+				
+				if(!sender.hasPermission("sp.help") && !sender.hasPermission("sp.*")) return false;
 				
 				sender.sendMessage(ChatColor.RED + "Uknown command - please use /sp help!");
 				
