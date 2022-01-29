@@ -15,6 +15,7 @@ import superpowers.main.SuperPowers;
 import superpowers.superpowers.SuperPower;
 import superpowers.superpowers.SuperPowersEnum;
 import superpowers.tasks.SPCooldown;
+import superpowers.utils.HiddenStringUtils;
 
 public class SuperPowersEvent implements Listener {
 	
@@ -23,16 +24,17 @@ public class SuperPowersEvent implements Listener {
 		
 		if(!e.getAction().equals(Action.RIGHT_CLICK_AIR) && !e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
 		
+		Player p = e.getPlayer();
 		final ItemStack item = e.getItem();
 		
 		//ItemStack checks
 		try {
-			//replaceAll("§", "") used to get lore without the hidden functionality
-			if(!item.getItemMeta().getLore().get(0).replaceAll("§", "").contains("superpower: ")) return;
 			
-		}catch(NullPointerException exc) {return;}
+			if(HiddenStringUtils.extractHiddenString(item.getItemMeta().getLore().get(0)).contains("superpower: ")) return;
+			
+		}catch(NullPointerException exc) {exc.printStackTrace(); return;}
 		
-		Player p = e.getPlayer();
+		
 		
 		//SuperPower check
 		SuperPower superPower = getSuperPower(item, p);
@@ -58,7 +60,7 @@ public class SuperPowersEvent implements Listener {
 	private SuperPower getSuperPower(ItemStack item, Player p) {
 		
 		SuperPowersEnum type = SuperPowersEnum.valueOf(
-				item.getItemMeta().getLore().get(0).replaceAll("§", "").replace("superpower: ", "").toUpperCase());
+				HiddenStringUtils.extractHiddenString(item.getItemMeta().getLore().get(0)).replace("superpower: ", "").toUpperCase());
 		
 		//replaceAll("§", "") used to get lore without the hidden functionality
 		String className = 
@@ -81,6 +83,18 @@ public class SuperPowersEvent implements Listener {
 		catch (NoSuchMethodException exc) {Bukkit.getConsoleSender().sendMessage("NoSuchMethoException");return null;}
 		catch (SecurityException exc) {Bukkit.getConsoleSender().sendMessage("SecurityException");return null;}
 		
+	}
+	
+	public static String unTranslateAlternateColorCodes(String text) {
+	    char[] array = text.toCharArray();
+	    for (int i = 0; i < array.length - 1; i++) {
+	    	SuperPowers.getInstance().getLogger().info(array[i] + "");
+	        if (array[i] == ChatColor.COLOR_CHAR && "0123456789AaBbCcDdEeFfKkLlMmNnOoRr".indexOf(array[i + 1]) != -1) {
+	            array[i] = '&';
+	            array[i + 1] = Character.toLowerCase(array[i + 1]);
+	        }
+	    }
+	    return new String(array);
 	}
 	
 }

@@ -16,6 +16,7 @@ import org.bukkit.util.StringUtil;
 import net.md_5.bungee.api.ChatColor;
 import superpowers.main.SuperPowers;
 import superpowers.superpowers.SuperPowersEnum;
+import superpowers.utils.HiddenStringUtils;
 
 public class SuperPowerCommands implements TabExecutor {
 	
@@ -169,10 +170,8 @@ public class SuperPowerCommands implements TabExecutor {
 		
 		meta.setDisplayName(ChatColor.GREEN + spName);
 		
-		String hiddenlore = "";
-		for (char c : ("superpower: " + spName).toCharArray()) hiddenlore += ChatColor.COLOR_CHAR+""+c;
+		lore.add(HiddenStringUtils.encodeString("superpower: " + spName));
 		
-		lore.add(hiddenlore);
 		meta.setLore(lore);
 		
 		item.setItemMeta(meta);
